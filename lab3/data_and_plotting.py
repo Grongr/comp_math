@@ -13,7 +13,7 @@ def aim(x):
     return math.cos(x)
     
 def printData():
-    num = [2**i for i in range(1, 8)]
+    num = [2**i for i in range(1, 12)]
     for n in num:
         genData(n)
     
@@ -21,13 +21,14 @@ def main():
     
     fig, ax = plt.subplots()
     
-    num = [2**i for i in range(1, 8)]
-    err = [0.459698, 0.256359, 0.0971266, 0.0292395, 0.00796214, 0.00207277, 0.000528458]
+    num = [2**i for i in range(1, 8)] + [210]
+    err = [0.459698, 0.256359, 0.0971266, 0.0292395, 0.00796214, 0.00207277, 0.000528458, 0.000197818]
     
     plt.plot(num, err)
     
     ax.legend()
     plt.show()
 
-# printData()
+# n = int(input())
+# genData(n)
 main()
