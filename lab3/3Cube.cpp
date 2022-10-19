@@ -30,5 +30,5 @@ int main() {
     }
 
     CubicSpline spline(x, y);
-    cout << err(spline);
+    cout << err(spline) << std::endl;
 }

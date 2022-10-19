@@ -5,7 +5,7 @@
 
 int main() {
 
-    std::vector<double> x = {0, 1, 2, 3};
+    std::vector<double> x = {1, 2};
     std::vector<double> f(x.size());
 
     for (int i = 0; i < f.size(); ++i)

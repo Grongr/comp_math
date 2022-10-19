@@ -1,5 +1,8 @@
 #include <algorithm>
+#include <exception>
+#include <stdexcept>
 #include <vector>
+#include <iostream>
 #include "cubic_spline.hpp"
 
 [[nodiscard]] double CubicSpline::divided_difference2(double x1, double x2,
@@ -18,7 +21,7 @@ void CubicSpline::threediag_coefs(const std::vector<double>& x,
                                                  std::vector<double>& a3,
                                                  std::vector<double>& c3) const {
 
-    for (int i = 0; i < a.size(); ++i) {
+    for (int i = 1; i < x.size() - 1; ++i) {
 
         a3[i] = (x[i] - x[i-1]) / ( (x[i] - x[i-1]) + (x[i + 1] - x[i]) );
         c3[i] = (x[i+1] - x[i]) / ( x[i] - x[i-1] + x[i+1] - x[i] );
@@ -76,6 +79,9 @@ void CubicSpline::abd_coefs_calculation(const std::vector<double>& x,
 CubicSpline::CubicSpline(const std::vector<double>& x,
                          const std::vector<double>& f) {
 
+    if (x.size() < 2)
+        std::runtime_error("size of x less then 2\n");
+
     int N = x.size() - 1;
 
     this->a.resize(N + 1);
@@ -83,7 +89,10 @@ CubicSpline::CubicSpline(const std::vector<double>& x,
     this->d.resize(N + 1);
     this->c.resize(N + 1);
     
-    std::vector<double> a3(N - 1), b3(N - 1, 2), c3(N - 1), d3(N - 1);
+    // shitcode begin
+    /* std::vector<double> a3(N - 1), b3(N - 1, 2), c3(N - 1), d3(N - 1); */
+    // shitcode end
+    std::vector<double> a3(N), b3(N, 2), c3(N), d3(N);
 
     for (int i = 0; i < N - 1; ++i) {
             d3[i] = divided_difference3(x[i], x[i+1], x[i+2],

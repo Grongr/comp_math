@@ -1,3 +1,0 @@
-/home/grongr/learning/mipt/compmath/lab3/build-run/CMakeFiles/rebuild_cache.dir
-/home/grongr/learning/mipt/compmath/lab3/build-run/CMakeFiles/edit_cache.dir
-/home/grongr/learning/mipt/compmath/lab3/build-run/CMakeFiles/main.dir

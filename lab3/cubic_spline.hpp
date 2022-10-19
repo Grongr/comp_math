@@ -46,7 +46,7 @@ public:
      * {    a_2 b_2 c_2                     }
      * {                 ...                }
      * {             a_(n-1) b_(n-1) c_(n-1)}
-     * {                       b_n     c_n  }
+     * {                       a_n     b_n  }
      *
      * @param [in]  <x>  points $x_i$
      * @param [in]  <f>  function values $f_i = f(x_i)$
