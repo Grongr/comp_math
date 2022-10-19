@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/main.dir/3Cube.cpp.o CMakeFiles/main.dir/cubic_spline.cpp.o  -o main 

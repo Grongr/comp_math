@@ -1,5 +1,17 @@
 #include <algorithm>
+#include <vector>
 #include "cubic_spline.hpp"
+
+[[nodiscard]] double CubicSpline::divided_difference2(double x1, double x2,
+                                         double f1, double f2) {
+    return (f2 - f1) / (x2 - x1);
+}
+
+[[nodiscard]] double CubicSpline::divided_difference3(double x1, double x2, double x3,
+                                         double f1, double f2, double f3) {
+    return (divided_difference2(x2, x3, f2, f3) -
+            divided_difference2(x1, x2, f1, f2)) / (x3 - x1);
+}
 
 void CubicSpline::threediag_coefs(const std::vector<double>& x,
                                                  const std::vector<double>& f,
@@ -59,16 +71,7 @@ void CubicSpline::abd_coefs_calculation(const std::vector<double>& x,
     }
 }
 
-[[nodiscard]] double divided_difference2(double x1, double x2,
-                                         double f1, double f2) {
-    return (f2 - f1) / (x2 - x1);
-}
 
-[[nodiscard]] double divided_difference3(double x1, double x2, double x3,
-                                         double f1, double f2, double f3) {
-    return (divided_difference2(x2, x3, f2, f3) -
-            divided_difference2(x1, x2, f1, f2)) / (x3 - x1);
-}
 
 CubicSpline::CubicSpline(const std::vector<double>& x,
                          const std::vector<double>& f) {
