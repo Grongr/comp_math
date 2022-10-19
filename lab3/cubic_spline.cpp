@@ -5,7 +5,6 @@ void CubicSpline::threediag_coefs(const std::vector<double>& x,
                                                  const std::vector<double>& f,
                                                  std::vector<double>& a3,
                                                  std::vector<double>& c3) const {
-    int N = x.size() - 1;
 
     for (int i = 0; i < a.size(); ++i) {
 
@@ -17,7 +16,7 @@ void CubicSpline::threediag_coefs(const std::vector<double>& x,
 void CubicSpline::cumlulateC(std::vector <double> &a3, std:: vector <double> &b3,
                              std::vector <double> &c3,
                              std::vector <double> &d3) {
-    int M = a3.size()-1;    //M+1
+    const size_t M = a3.size()-1;    //M+1
     this->c[0] = 0;
     this->c[M] = 0;
     std::vector <double> p(M+1, 0), q(M+1, 0);
@@ -101,14 +100,17 @@ CubicSpline::CubicSpline(const std::vector<double>& x,
 
     auto up = std::upper_bound(this->x.begin(), this->x.end(), x);
 
-    int i = up - this->x.begin();
+    const int i = std::min((int)(up - this->x.begin()), (int)this->x.size() - 1);
 
     double result = 0;
 
+    const double tmp = x - this->x[i];
+
     result += a[i];
-    result += b[i] * (x - this->x[i]);
-    result += c[i] / 2 * (x - this->x[i]) * (x - this->x[i]);
-    result += d[i] / 6 * (x - this->x[i]) * (x - this->x[i]) * (x - this->x[i]);
+    result += b[i] * tmp;
+    const double tmp2 = tmp * tmp;
+    result += c[i] / 2 * tmp2;
+    result += d[i] / 6 * tmp * tmp2;
 
     return result;
 }
