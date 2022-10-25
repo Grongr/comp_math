@@ -22,8 +22,11 @@ double err(CubicSpline &spline, double len = 3, int n = 1000) {
 
 int main() {
     int n;
-    cin >> n;
+    std::cin >> n;
     vector <double> x(n), y(n);
+    /* vector<double> x = {0, 1, 2, 3}; */
+    /* vector<double> y = {1, 2, 3, 4}; */
+
     for (int i = 0; i < n; i++) {
         cin >> x[i];
         y[i] = aim(x[i]);

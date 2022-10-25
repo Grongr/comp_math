@@ -5,21 +5,6 @@
 
 #include <vector>
 
-struct Coefficients {
-
-    /*!
-     *
-     * Function, that calculates the coefficients of Cubic Spline
-     * with (x, f) points
-     *
-     * @param [in] <x> points $x_i$
-     * @param [in] <f> function values $f_i = f(x_i)$
-     *
-     */
-    Coefficients(const std::vector<double>& x,
-                 const std::vector<double>& f);
-};
-
 class CubicSpline {
 
 public:

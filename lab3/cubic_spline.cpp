@@ -53,7 +53,7 @@ void CubicSpline::abd_coefs_calculation(const std::vector<double>& x,
 
     int N = x.size() - 1;
 
-    for (int i = 0; i < N + 1; ++i)
+    for (int i = 1; i < N + 1; ++i)
         this->a[i] = f[i];
 
     this->b[1] = this->c[1] * (x[1] - x[0]) / 3 +
@@ -95,7 +95,7 @@ CubicSpline::CubicSpline(const std::vector<double>& x,
     std::vector<double> a3(N), b3(N, 2), c3(N), d3(N);
 
     for (int i = 0; i < N - 1; ++i) {
-            d3[i] = divided_difference3(x[i], x[i+1], x[i+2],
+            d3[i] = 6 * divided_difference3(x[i], x[i+1], x[i+2],
                                  f[i], f[i+1], f[i+2]);
     }
 
@@ -106,6 +106,22 @@ CubicSpline::CubicSpline(const std::vector<double>& x,
     abd_coefs_calculation(x, f);
 
     this->x = std::move(x);
+
+    for (int i = 1; i < this->a.size(); ++i)
+        std::cout << this->a[i] << " ";
+    std::cout << std::endl;
+
+    for (int i = 1; i < this->a.size(); ++i)
+        std::cout << this->b[i] << " ";
+    std::cout << std::endl;
+
+    for (int i = 1; i < this->a.size(); ++i)
+        std::cout << this->c[i] << " ";
+    std::cout << std::endl;
+
+    for (int i = 1; i < this->a.size(); ++i)
+        std::cout << this->d[i] << " ";
+    std::cout << std::endl;
 }
 
 [[nodiscard]] double CubicSpline::interpolate(double x) const {
