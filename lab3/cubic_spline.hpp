@@ -5,6 +5,22 @@
 
 #include <vector>
 
+/*!
+ *
+ * Function to solve linear equation systems with Gauss method
+ *
+ * @param  [in] <sys> coefs matrix
+ * @param  [in] <ans> answeres to equations system
+ * @return
+ */
+std::vector <double> solveSys(std::vector <std::vector <double> > &sys,
+                              std::vector <double> &ans);
+
+std::vector <double> mulMat(std::vector <std::vector <double> > &A,
+                            std::vector <double> &B);
+
+void inversed(std::vector <std::vector <double> >& A);
+
 class CubicSpline {
 
 public:
@@ -66,11 +82,16 @@ public:
     void abd_coefs_calculation(const std::vector<double>& x,
                                const std::vector<double>& f);
 
-    [[nodiscard]] double divided_difference2(double x1, double x2,
-                                             double f1, double f2);
+    [[nodiscard]] static double divided_difference2(double x1, double x2,
+                                                    double f1, double f2) {
+        return (f2 - f1) / (x2 - x1);
+    }
 
-    [[nodiscard]] double divided_difference3(double x1, double x2, double x3,
-                                             double f1, double f2, double f3);
+    [[nodiscard]] static double divided_difference3(double x1, double x2, double x3,
+                                                    double f1, double f2, double f3) {
+        return (divided_difference2(x2, x3, f2, f3) -
+                divided_difference2(x1, x2, f1, f2)) / (x3 - x1);
+    }
 
     [[nodiscard]] double interpolate(double x) const;
 

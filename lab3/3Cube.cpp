@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <cmath>
 #include "cubic_spline.hpp"
@@ -24,8 +23,8 @@ int main() {
     int n;
     std::cin >> n;
     vector <double> x(n), y(n);
-    /* vector<double> x = {0, 1, 2, 3}; */
-    /* vector<double> y = {1, 2, 3, 4}; */
+    /* vector<double> x = {0, 1, 2, 3, 4, 5}; */
+    /* vector<double> y = {1, 2, 3, 5, 7, 10}; */
 
     for (int i = 0; i < n; i++) {
         cin >> x[i];
