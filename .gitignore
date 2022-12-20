@@ -2,4 +2,4 @@ build-run/*
 cubic_spline.hpp.gch
 cmake-build/
 cmake-build-debug/
-lab3/.idea
+.idea
