@@ -15,7 +15,7 @@ class EquationSolver {
 
 public:
 
-    EquationSolver(std::function<double(double)> func)
+    explicit EquationSolver(std::function<double(double)> func)
     : func{std::move(func)} {}
 
     static std::vector<double> GaussSolver(double** a,
@@ -28,7 +28,7 @@ public:
      * @param a
      * @return
      */
-    static double binpow(double x, int a) noexcept;
+    //static double binpow(double x, int a) noexcept;
 
     std::function<double(double)> func;
 };
@@ -37,8 +37,8 @@ class NonlinearSolver : public EquationSolver {
 
 public:
 
-    NonlinearSolver(std::function<double(double)> func)
-    : EquationSolver{func} {}
+    explicit NonlinearSolver(std::function<double(double)> func)
+    : EquationSolver{std::move(func)} {}
 
     /*!
      * Solves equation with bisection method

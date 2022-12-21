@@ -42,6 +42,9 @@ static void solve_the_equation(std::string file_x, std::string file_y,
                                NonlinearSolver& slv, MethodsId id,
                                double accur) {
 
+    file_x = "../data/" + file_x;
+    file_y = "../data/" + file_y;
+
     std::ofstream filex, filey;
     filex.open(file_x);
     filey.open(file_y);
@@ -86,40 +89,37 @@ int main() {
     NonlinearSolver slv3(eq3);
 
     /* Kepler Solutions BEGIN */
-    solve_the_equation("../Kepler_Newton_x.dat",
-                       "../Kepler_Newton_y.dat",
+    solve_the_equation("Kepler_Newton_x.dat",
+                       "Kepler_Newton_y.dat",
                        slvK, NewtonId, 0.861265);
 
-    solve_the_equation("../Kepler_Bin_x.dat",
-                       "../Kepler_Bin_y.dat",
+    solve_the_equation("Kepler_Bin_x.dat",
+                       "Kepler_Bin_y.dat",
                        slvK, BisectionId, 0.81265);
 
-    solve_the_equation("../Kepler_Iter_x.dat",
-                       "../Kepler_Iter_y.dat",
-                       slvK, IterationId, 0.81265);
     /* Kepler Solutions END */
 
     /* Func 2 Solutions BEGIN */
-    solve_the_equation("../Tg_Newton_x.dat",
-                       "../Tg_Newton_y.dat",
+    solve_the_equation("Tg_Newton_x.dat",
+                       "Tg_Newton_y.dat",
                        slv2, NewtonId, 0.78539816);
 
-    solve_the_equation("../Tg_Bin_x.dat",
-                       "../Tg_Bin_y.dat",
+    solve_the_equation("Tg_Bin_x.dat",
+                       "Tg_Bin_y.dat",
                        slv2, BisectionId, 0.78539816);
 
-    solve_the_equation("../Tg_Iter_x.dat",
-                       "../Tg_Iter_y.dat",
+    solve_the_equation("Tg_Iter_x.dat",
+                       "Tg_Iter_y.dat",
                        slv2, IterationId, 0.78539816);
     /* Func 2 Solutions END */
 
     /* Func 3 Solutions BEGIN */
-    solve_the_equation("../Ln_Newton_x.dat",
-                       "../Ln_Newton_y.dat",
+    solve_the_equation("Ln_Newton_x.dat",
+                       "Ln_Newton_y.dat",
                        slv3, NewtonId, 0);
 
-    solve_the_equation("../Ln_Bin_x.dat",
-                       "../Ln_Bin_y.dat",
+    solve_the_equation("Ln_Bin_x.dat",
+                       "Ln_Bin_y.dat",
                        slv3, BisectionId, 0);
 
     solve_the_equation("Ln_Iter_x.dat",
