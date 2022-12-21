@@ -121,7 +121,7 @@ double NonlinearSolver::dfdx(double h, std::vector<double> C,
     std::vector<double> c = firstDer(points);
     double x = inital;
     for (int i = 0; i < n; i++) {
-        x = x - (func(x) / dfdx(0.001, c, points, x, func));
+        x = x - (this->func(x) / dfdx(0.001, c, points, x));
     }
     return x;
 }

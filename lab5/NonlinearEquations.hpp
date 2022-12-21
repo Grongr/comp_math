@@ -16,7 +16,7 @@ class EquationSolver {
 public:
 
     EquationSolver(std::function<double(double)> func)
-    : func{std::move{func}} {}
+    : func{std::move(func)} {}
 
     static std::vector<double> GaussSolver(double** a,
                                            double* y,
