@@ -13,16 +13,16 @@ def arrToStr(arr):
         s += str(i)+' '
     return s[:-1]
 
-def generateData(n, dots):
-    f = open('data.txt','w')
-    f.write(f'{n} {dots}\n')
-    arr = []
-    for i in range(1, n+1):
-        arr.append([j*(i*(MAXH - MINH)/n + MINH) for j in points])
-        f.writ
-        e(f'{arrToStr(arr[i-1])}\n')
-    print("DONE!")
-    f.close()
+# def generateData(n, dots):
+#     f = open('data.txt','w')
+#     f.write(f'{n} {dots}\n')
+#     arr = []
+#     for i in range(1, n+1):
+#         arr.append([j*(i*(MAXH - MINH)/n + MINH) for j in points])
+#         f.writ
+#         e(f'{arrToStr(arr[i-1])}\n')
+#     print("DONE!")
+#     f.close()
 
 def aim(x):
     return ((math.log(x) + 1) * (x**x))
