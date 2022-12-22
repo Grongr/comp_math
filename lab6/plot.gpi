@@ -1,0 +1,16 @@
+#! /bin/gnuplot
+
+set key top right box
+set key width 3
+set key height 3
+
+set title  "График ошибки"
+set xlabel "Шаг"
+set ylabel "Ошибка"
+
+set grid xtics ytics mytics
+
+set term png size 1080,720
+set output "graph.png"
+
+plot "out.dat" pt 7 lt 2
